@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "982009979007",
+    "project_id": "com-sandya-pos",
+    "storage_bucket": "com-sandya-pos.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982009979007:android:bcdd55a612b759c1169f4a",
+        "android_client_info": {
+          "package_name": "com.sandya.pos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKnBGtms4Dudh0qdKxQsXL1b6JuYTgeIs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
