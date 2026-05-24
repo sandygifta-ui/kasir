@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF5F5"> <!-- Background Pink Pastel Soft -->
+
+    <!-- Header Toolbar Atas -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@android:drawable/ic_menu_revert"
+            app:title="Tambah Pegawai"
+            app:titleTextColor="#4A4A4A"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Konten Form (Scrollable) -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="24dp">
+
+            <!-- Avatar Profil Placeholder -->
+            <FrameLayout
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="32dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivProfilePicture"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@android:drawable/ic_menu_report_image"
+                    android:scaleType="centerCrop"
+                    android:padding="4dp"
+                    app:strokeColor="#B3E1F8"
+                    app:strokeWidth="2dp"
+                    app:shapeAppearanceOverlay="@style/CircleImage"/>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fabChangePhoto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:contentDescription="Ubah Foto"
+                    app:fabSize="mini"
+                    android:src="@android:drawable/ic_input_add"
+                    app:backgroundTint="#F8BBD0"
+                    app:tint="#FFFFFF"/>
+            </FrameLayout>
+
+            <!-- Card Form Input Isian Data Pegawai -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#FFFFFF"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Data Lengkap Pegawai"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#4A4A4A"
+                        android:layout_marginBottom="16dp"/>
+
+                    <!-- Input Nama Lengkap (ID: etName) -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Nama Lengkap"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_marginBottom="12dp"
+                        app:boxStrokeColor="#E1F5FE"
+                        app:hintTextColor="#78909C">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Input Email (ID: etEmail) -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Email"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_marginBottom="12dp"
+                        app:boxStrokeColor="#E1F5FE">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textEmailAddress"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Input Nomor Telepon (ID: etPhone) -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Nomor Telepon"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_marginBottom="16dp"
+                        app:boxStrokeColor="#E1F5FE">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etPhone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="phone"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Spinner Pilihan Outlet (Sesuai Gambar) -->
+                    <Spinner
+                        android:id="@+id/spinnerOutlet"
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:layout_marginBottom="16dp"
+                        android:paddingHorizontal="12dp"
+                        android:background="@android:drawable/edit_text"
+                        android:backgroundTint="#F8BBD0"/>
+
+                    <!-- SEKSI BARU: Status Aktif (SwitchCompat) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="20dp"
+                        android:paddingHorizontal="4dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Status Aktif"
+                            android:textSize="14sp"
+                            android:textColor="#4A4A4A"/>
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/switchStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            app:thumbTint="#37474F"
+                            app:trackTint="#B3E1F8"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E0E0E0"
+                        android:layout_marginBottom="20dp"/>
+
+                    <!-- Input Jabatan (ID: etPosition) -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Jabatan"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_marginBottom="12dp"
+                        app:boxStrokeColor="#E1F5FE">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etPosition"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Input Gaji Bulanan (ID: etSalary) -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Gaji Bulanan"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_marginBottom="24dp"
+                        app:boxStrokeColor="#E1F5FE">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etSalary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Tombol Simpan (ID: btnSave) -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSave"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:text="Simpan Data Pegawai"
+                        android:textAllCaps="false"
+                        android:textSize="16sp"
+                        app:backgroundTint="#F8BBD0"
+                        android:textColor="#FFFFFF"
+                        app:cornerRadius="16dp"/>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
