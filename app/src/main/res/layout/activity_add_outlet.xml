@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface">
+
+    <!-- Header Area -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarOutlet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="8dp"
+            app:navigationIcon="@android:drawable/ic_menu_revert"
+            app:navigationIconTint="?attr/colorOnSurface">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tambah Outlet"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Point Of Sales"
+                    android:textColor="#78909C"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Form Area -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="?attr/colorSurfaceVariant">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Detail Outlet"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="24dp"/>
+
+                    <!-- Input Nama Outlet -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Outlet"
+                        android:textSize="13sp"
+                        android:layout_marginBottom="6dp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_marginBottom="16dp"
+                        app:boxStrokeColor="#B3E1F8"
+                        app:hintEnabled="false">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etOutletName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Masukkan Nama Outlet"
+                            android:textColorHint="#90A4AE"
+                            android:textSize="14sp"
+                            android:inputType="textCapWords"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Input Alamat Outlet -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Alamat Outlet"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="13sp"
+                        android:layout_marginBottom="6dp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_marginBottom="16dp"
+                        app:boxStrokeColor="#B3E1F8"
+                        app:hintEnabled="false"
+                        app:counterEnabled="true"
+                        app:counterMaxLength="160">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etOutletAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Masukkan Alamat Lengkap"
+                            android:textColorHint="#90A4AE"
+                            android:textSize="14sp"
+                            android:gravity="top|start"
+                            android:lines="4"
+                            android:inputType="textMultiLine"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Input Nomor Kontak Outlet -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nomor Kontak Outlet"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="13sp"
+                        android:layout_marginBottom="6dp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_marginBottom="28dp"
+                        app:boxStrokeColor="#B3E1F8"
+                        app:hintEnabled="false">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etOutletPhone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Masukkan Nomor Kontak"
+                            android:textColorHint="#90A4AE"
+                            android:textSize="14sp"
+                            android:inputType="phone"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Tombol Simpan Berwarna Pastel Blue/Indigo Modern -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSaveOutlet"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:text="Simpan Outlet"
+                        android:textAllCaps="false"
+                        android:textSize="16sp"
+                        app:backgroundTint="#B3E1F8"
+                        android:textColor="#1565C0"
+                        app:cornerRadius="16dp"/>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
