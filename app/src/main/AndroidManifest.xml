@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.google.com/tools"
+    xmlns:tools1="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -10,21 +18,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Pos">
+        android:theme="@style/Theme.Pos"
+        tools:targetApi="31">
         <activity
-            android:name=".data_produk"
+            android:name=".PelangganActivity"
             android:exported="false" />
         <activity
-            android:name=".item_data_produk"
-            android:exported="false" />
-        <activity
-            android:name=".model_produk"
-            android:exported="false" />
-        <activity
-            android:name=".TambahKategoriActivity"
-            android:exported="false" />
-        <activity
-            android:name=".kategori.DataKategoriActivity"
+            android:name=".AccountActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -35,6 +35,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".TransactionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DataKategoriActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TambahKategoriActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DaftarProdukActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddEmployeeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddOutletActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PrinterActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

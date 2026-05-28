@@ -4,25 +4,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF5F5"> <!-- Background Pink Pastel Soft -->
+    android:background="#FFF5F5"> <com.google.android.material.appbar.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    app:elevation="0dp">
 
-    <!-- Header Toolbar Atas -->
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        app:elevation="0dp">
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="@android:drawable/ic_menu_revert"
+        app:title="Tambah Pegawai"
+        app:titleTextColor="#4A4A4A"/>
+</com.google.android.material.appbar.AppBarLayout>
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@android:drawable/ic_menu_revert"
-            app:title="Tambah Pegawai"
-            app:titleTextColor="#4A4A4A"/>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <!-- Konten Form (Scrollable) -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,23 +31,29 @@
             android:gravity="center_horizontal"
             android:padding="24dp">
 
-            <!-- Avatar Profil Placeholder -->
             <FrameLayout
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="32dp">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/ivProfilePicture"
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@android:drawable/ic_menu_report_image"
-                    android:scaleType="centerCrop"
-                    android:padding="4dp"
+                    app:cardCornerRadius="65dp"
+                    app:cardElevation="0dp"
                     app:strokeColor="#B3E1F8"
                     app:strokeWidth="2dp"
-                    app:shapeAppearanceOverlay="@style/CircleImage"/>
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/ivProfilePicture"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@android:drawable/ic_menu_report_image"
+                        android:scaleType="centerCrop"
+                        android:padding="4dp"/>
+                </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/fabChangePhoto"
@@ -65,7 +67,6 @@
                     app:tint="#FFFFFF"/>
             </FrameLayout>
 
-            <!-- Card Form Input Isian Data Pegawai -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -89,7 +90,6 @@
                         android:textColor="#4A4A4A"
                         android:layout_marginBottom="16dp"/>
 
-                    <!-- Input Nama Lengkap (ID: etName) -->
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -105,7 +105,6 @@
                             android:inputType="textPersonName"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <!-- Input Email (ID: etEmail) -->
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -120,7 +119,6 @@
                             android:inputType="textEmailAddress"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <!-- Input Nomor Telepon (ID: etPhone) -->
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -135,7 +133,6 @@
                             android:inputType="phone"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <!-- Spinner Pilihan Outlet (Sesuai Gambar) -->
                     <Spinner
                         android:id="@+id/spinnerOutlet"
                         android:layout_width="match_parent"
@@ -145,7 +142,6 @@
                         android:background="@android:drawable/edit_text"
                         android:backgroundTint="#F8BBD0"/>
 
-                    <!-- SEKSI BARU: Status Aktif (SwitchCompat) -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -177,7 +173,6 @@
                         android:background="#E0E0E0"
                         android:layout_marginBottom="20dp"/>
 
-                    <!-- Input Jabatan (ID: etPosition) -->
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -192,7 +187,6 @@
                             android:inputType="text"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <!-- Input Gaji Bulanan (ID: etSalary) -->
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -207,7 +201,6 @@
                             android:inputType="number"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <!-- Tombol Simpan (ID: btnSave) -->
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnSave"
                         android:layout_width="match_parent"

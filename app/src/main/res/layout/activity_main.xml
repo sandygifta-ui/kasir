@@ -11,7 +11,7 @@
         android:id="@+id/tvGreeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Selamat Siang, Sean"
+        android:text="Selamat Bengi, Sean"
         android:textSize="28sp"
         android:textStyle="bold"
         android:textColor="?android:attr/textColorPrimary"
@@ -21,7 +21,7 @@
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="08 Januari 2026"
+        android:text="24 Mei 2026"
         android:textSize="14sp"
         android:textColor="?android:attr/textColorSecondary"
         android:layout_gravity="end"
@@ -248,7 +248,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Layanan"
+                    android:text="Produk"
                     android:textSize="14sp"
                     android:textColor="?android:attr/textColorPrimary"
                     android:layout_marginTop="8dp" />
@@ -284,7 +284,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tambahan"
+                    android:text="Kategori"
                     android:textSize="14sp"
                     android:textColor="?android:attr/textColorPrimary"
                     android:layout_marginTop="8dp" />
