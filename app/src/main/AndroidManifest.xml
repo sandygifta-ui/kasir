@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.google.com/tools"
-    xmlns:tools1="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -9,6 +8,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -20,42 +20,42 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pos"
         tools:targetApi="31">
-        <activity
-            android:name=".PelangganActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AccountActivity"
-            android:exported="false" />
+
+        <activity android:name=".PilihProdukActivity" android:exported="false" />
+        <activity android:name=".PembayaranActivity" android:exported="false" />
+        <activity android:name=".CetakStrukActivity" android:exported="false" />
+        <activity android:name=".LaporanActivity" android:exported="false" />
+        <activity android:name=".DaftarProdukActivity" android:exported="false" />
+        <activity android:name=".TambahKategoriActivity" android:exported="false" />
+        <activity android:name=".ModelProdukActivity" android:exported="false" />
+        <activity android:name=".DataKategoriActivity" android:exported="false" />
+        <activity android:name=".TambahProdukActivity" android:exported="false" />
+        <activity android:name=".PelangganActivity" android:exported="false" />
+        <activity android:name=".TambahPelangganActivity" android:exported="false" />
+        <activity android:name=".AccountActivity" android:exported="false" />
+        <activity android:name=".AddEmployeeActivity" android:exported="false" />
+        <activity android:name=".AddOutletActivity" android:exported="false" />
+        <activity android:name=".PrinterActivity" android:exported="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".TransactionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DataKategoriActivity"
-            android:exported="false" />
-        <activity
-            android:name=".TambahKategoriActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DaftarProdukActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AddEmployeeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AddOutletActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PrinterActivity"
-            android:exported="false" />
+
     </application>
 
 </manifest>

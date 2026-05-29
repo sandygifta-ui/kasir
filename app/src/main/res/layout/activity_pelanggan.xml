@@ -6,7 +6,7 @@
     android:background="#FDFBFD"
     android:padding="16dp">
 
-    <!-- Header Toolbar -->
+    <!-- Header Toolbar Halaman Pelanggan -->
     <LinearLayout
         android:id="@+id/layoutHeader"
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
         android:layout_marginBottom="16dp">
 
         <ImageButton
-            android:id="@+id/btnBack"
+            android:id="@+id/btnBackInput"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackgroundBorderless"
@@ -34,7 +34,7 @@
             android:layout_marginStart="12dp" />
     </LinearLayout>
 
-    <!-- RecyclerView List Pelanggan -->
+    <!-- 🌟 RECYCLERVIEW (Huruf 'a' di kata android sudah kembali) -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPelanggan"
         android:layout_width="match_parent"
@@ -42,7 +42,7 @@
         android:layout_below="@id/layoutHeader"
         android:scrollbars="vertical" />
 
-    <!-- Tombol Tambah (+) Pink Pastel -->
+    <!-- 🌟 FLOATING ACTION BUTTON PINK PASTEL (Atribut android: dan app: sudah normal) -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabTambahPelanggan"
         android:layout_width="wrap_content"
@@ -53,7 +53,6 @@
         android:src="@android:drawable/ic_input_add"
         app:backgroundTint="#E8AEFF"
         app:tint="@android:color/white"
-        app:elevation="4dp"
-        android:contentDescription="Tambah Pelanggan" />
+        android:contentDescription="Tambah Pelanggan Baru" />
 
 </RelativeLayout>

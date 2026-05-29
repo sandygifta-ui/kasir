@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.github.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:ignore="HardcodedText">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -9,7 +12,6 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Judul -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,19 +21,20 @@
             android:layout_gravity="center"
             android:paddingBottom="16dp"/>
 
-        <!-- Card Foto -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="200dp"
             android:orientation="vertical"
             android:background="@android:drawable/dialog_holo_light_frame"
-            android:gravity="center">
+            android:gravity="center"
+            android:padding="8dp">
 
             <ImageView
                 android:id="@+id/imgPreview"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@android:drawable/ic_menu_camera"/>
+                android:src="@android:drawable/ic_menu_camera"
+                android:contentDescription="Pratinjau foto produk" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -39,7 +42,6 @@
                 android:text="Tambah Foto Produk"
                 android:paddingTop="8dp"/>
 
-            <!-- Tombol -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -52,82 +54,93 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Kamera"/>
+                    android:minHeight="48dp"
+                    android:text="Kamera"
+                    android:layout_marginEnd="4dp"/>
 
                 <Button
                     android:id="@+id/btnGaleri"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Galeri"/>
+                    android:minHeight="48dp"
+                    android:text="Galeri"
+                    android:layout_marginStart="4dp"/>
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Nama Produk -->
         <EditText
             android:id="@+id/etNama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:minHeight="48dp"
             android:hint="Nama Produk"
+            android:inputType="textPersonName"
             android:layout_marginTop="16dp"/>
 
-        <!-- Harga -->
         <EditText
             android:id="@+id/etHarga"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:minHeight="48dp"
             android:hint="Harga"
             android:inputType="number"
-            android:textSize="19dp"
+            android:textSize="19sp"
             android:layout_marginTop="10dp"/>
 
-        <!-- Kategori -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kategori"
-            android:layout_marginTop="12dp"/>
+            android:layout_marginTop="12dp"
+            android:textStyle="bold"/>
 
         <Spinner
             android:id="@+id/spKategori"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_marginTop="4dp"/>
 
-        <!-- Cabang -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cabang"
-            android:layout_marginTop="12dp"/>
+            android:layout_marginTop="12dp"
+            android:textStyle="bold"/>
 
         <Spinner
             android:id="@+id/spCabang"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_marginTop="4dp"/>
 
-        <!-- Stok -->
         <EditText
             android:id="@+id/etStok"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:minHeight="48dp"
             android:hint="Stok"
             android:inputType="number"
-            android:textSize="19dp"
+            android:textSize="19sp"
             android:layout_marginTop="10dp"/>
 
         <CheckBox
             android:id="@+id/cbTakTerbatas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Stok Tak Terbatas"/>
+            android:minHeight="48dp"
+            android:text="Stok Tak Terbatas"
+            android:layout_marginTop="4dp"/>
 
-        <!-- Tombol Simpan -->
         <Button
             android:id="@+id/btnSimpan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:minHeight="50dp"
             android:text="Simpan"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="24dp"/>
 
     </LinearLayout>
 </ScrollView>

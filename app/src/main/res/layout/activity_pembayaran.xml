@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FDFBFD"
+    android:padding="16dp"
+    tools:ignore="HardcodedText">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Metode Pembayaran"
+        android:textColor="#2D3142"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Tagihan"
+        android:textColor="#5C6B73"/>
+
+    <TextView
+        android:id="@+id/tvTagihanFinal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rp0"
+        android:textColor="#2D3142"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pilih Metode:"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp"/>
+
+    <RadioGroup
+        android:id="@+id/rgMetode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp">
+
+        <RadioButton
+            android:id="@+id/rbTunai"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Uang Tunai (Cash)"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/rbQriss"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="QRIS PastelPay"/>
+
+        <RadioButton
+            android:id="@+id/rbTransfer"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Transfer Bank"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnBayarSekarang"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:text="Bayar Sekarang"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:backgroundTint="#E8AEFF" />
+</LinearLayout>

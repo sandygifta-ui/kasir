@@ -2,54 +2,39 @@ package com.sandya.pos
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.sandya.pos.adapter.DataKategoriAdapter
+import androidx.cardview.widget.CardView
 
-class DataKategoriActivity : AppCompatActivity(), DataKategoriAdapter.OnItemClickListener {
+class DataKategoriActivity : AppCompatActivity() {
 
-    private lateinit var rvKategori: RecyclerView
-    private lateinit var adapterKategori: DataKategoriAdapter
-    private lateinit var fabAddKategori: FloatingActionButton
-    private val listKategori = ArrayList<String>()
+    private lateinit var btnBackKategori: ImageButton
+    private lateinit var cardLips: CardView
+    private lateinit var cardFace: CardView
+    private lateinit var cardEyes: CardView
+    private lateinit var cardSkincare: CardView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_data_kategori)
 
-        // 1. Inisialisasi RecyclerView Grid Pink
-        rvKategori = findViewById(R.id.rvKategori)
-        rvKategori.layoutManager = GridLayoutManager(this, 2)
+        btnBackKategori = findViewById(R.id.btnBackInput)
+        cardLips = findViewById(R.id.cardLips)
+        cardFace = findViewById(R.id.cardFace)
+        cardEyes = findViewById(R.id.cardEyes)
+        cardSkincare = findViewById(R.id.cardSkincare)
 
-        tampilkanKategoriSimulasi()
+        btnBackKategori.setOnClickListener { finish() }
 
-        adapterKategori = DataKategoriAdapter(listKategori, this)
-        rvKategori.adapter = adapterKategori
-
-        // 2. Inisialisasi Tombol Plus (+) Ungu Bulat
-        fabAddKategori = findViewById(R.id.fabAddKategori)
-
-        // 3. Aksi ketika tombol Plus diklik -> Membuka form tambah kategori baru
-        fabAddKategori.setOnClickListener {
-            val intent = Intent(this, TambahKategoriActivity::class.java)
-            startActivity(intent)
-        }
+        cardLips.setOnClickListener { bukaKategori("Lips") }
+        cardFace.setOnClickListener { bukaKategori("Face") }
+        cardEyes.setOnClickListener { bukaKategori("Eyes") }
+        cardSkincare.setOnClickListener { bukaKategori("Skincare") }
     }
 
-    private fun tampilkanKategoriSimulasi() {
-        listKategori.clear()
-        listKategori.add("Makeup Wajah")
-        listKategori.add("Lip Products")
-        listKategori.add("Skincare Glow")
-        listKategori.add("Eye Cosmetics")
-    }
-
-    // Aksi ketika salah satu kotak kategori pink diklik -> Membuka wadah produk
-    override fun onItemClick(kategori: String) {
+    private fun bukaKategori(kategori: String) {
         val intent = Intent(this, DaftarProdukActivity::class.java)
-        intent.putExtra("NAMA_KATEGORI", kategori)
+        intent.putExtra("KATEGORI_FILTER", kategori)
         startActivity(intent)
     }
 }

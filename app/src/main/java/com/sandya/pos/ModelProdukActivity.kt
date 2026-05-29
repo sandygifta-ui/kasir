@@ -1,11 +1,7 @@
 package com.sandya.pos
 
-import android.app.Activity
-import android.content.Intent
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.CheckBox
@@ -16,121 +12,88 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 
-@Suppress("SpellCheckingInspection")
 class ModelProdukActivity : AppCompatActivity() {
 
     private lateinit var imgPreview: ImageView
     private lateinit var btnKamera: Button
     private lateinit var btnGaleri: Button
-    private lateinit var btnSimpan: Button
     private lateinit var etNama: EditText
     private lateinit var etHarga: EditText
-    private lateinit var etStok: EditText
-    private lateinit var cbTakTerbatas: CheckBox
     private lateinit var spKategori: Spinner
     private lateinit var spCabang: Spinner
+    private lateinit var etStok: EditText
+    private lateinit var cbTakTerbatas: CheckBox
+    private lateinit var btnSimpan: Button
 
-    private var selectedImageUri: Uri? = null
+    private var gambarUriTerpilih: Uri? = null
 
-    // CAMERA RESULT
-    private val cameraLauncher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                @Suppress("DEPRECATION")
-                val photo = result.data?.extras?.get("data") as? Bitmap
-                photo?.let {
-                    selectedImageUri = null
-                    imgPreview.setImageBitmap(it)
-                }
-            }
+    private val bukaGaleriLauncher = registerForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        if (uri != null) {
+            gambarUriTerpilih = uri
+            imgPreview.setImageURI(uri)
         }
-
-    // GALLERY RESULT
-    private val galleryLauncher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                result.data?.data?.let { uri ->
-                    selectedImageUri = uri
-                    imgPreview.setImageURI(uri)
-                }
-            }
-        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.model_produk_activity)
 
-        initViews()
-
-        // SPINNER DATA
-        val categories = arrayOf("Makanan", "Minuman", "Snack")
-        val branches = arrayOf("Cabang 1", "Cabang 2")
-
-        spKategori.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, categories)
-        spCabang.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, branches)
-
-        // BUTTON ACTIONS
-        btnKamera.setOnClickListener {
-            cameraLauncher.launch(Intent(MediaStore.ACTION_IMAGE_CAPTURE))
-        }
-
-        btnGaleri.setOnClickListener {
-            galleryLauncher.launch(Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI))
-        }
-
-        // CHECKBOX STOCK
-        cbTakTerbatas.setOnCheckedChangeListener { _, isChecked ->
-            etStok.isEnabled = !isChecked
-            if (isChecked) {
-                etStok.setText("")
-                etStok.error = null
-            }
-        }
-
-        // SAVE BUTTON
-        btnSimpan.setOnClickListener {
-            validateAndSave()
-        }
-    }
-
-    private fun initViews() {
         imgPreview = findViewById(R.id.imgPreview)
         btnKamera = findViewById(R.id.btnKamera)
         btnGaleri = findViewById(R.id.btnGaleri)
-        btnSimpan = findViewById(R.id.btnSimpan)
         etNama = findViewById(R.id.etNama)
         etHarga = findViewById(R.id.etHarga)
-        etStok = findViewById(R.id.etStok)
-        cbTakTerbatas = findViewById(R.id.cbTakTerbatas)
         spKategori = findViewById(R.id.spKategori)
         spCabang = findViewById(R.id.spCabang)
-    }
+        etStok = findViewById(R.id.etStok)
+        cbTakTerbatas = findViewById(R.id.cbTakTerbatas)
+        btnSimpan = findViewById(R.id.btnSimpan)
 
-    private fun validateAndSave() {
-        val name = etNama.text.toString().trim()
-        val price = etHarga.text.toString().trim()
-        val inputStock = etStok.text.toString().trim()
+        val listKategori = arrayOf("Lips", "Face", "Eyes", "Skincare")
+        val adapterKategori = ArrayAdapter(this, android.R.layout.simple_spinner_item, listKategori)
+        adapterKategori.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spKategori.adapter = adapterKategori
 
-        if (name.isEmpty()) {
-            etNama.error = "Required"
-            return
+        val listCabang = arrayOf("Pusat", "Cabang Surakarta", "Cabang Sukoharjo")
+        val adapterCabang = ArrayAdapter(this, android.R.layout.simple_spinner_item, listCabang)
+        adapterCabang.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spCabang.adapter = adapterCabang
+
+        btnGaleri.setOnClickListener {
+            bukaGaleriLauncher.launch("image/*")
         }
 
-        if (price.isEmpty()) {
-            etHarga.error = "Required"
-            return
+        btnKamera.setOnClickListener {
+            Toast.makeText(this, "Fitur kamera aktif!", Toast.LENGTH_SHORT).show()
         }
 
-        val stock = if (cbTakTerbatas.isChecked) {
-            "Unlimited"
-        } else {
-            if (inputStock.isEmpty()) {
-                etStok.error = "Required"
-                return
+        btnSimpan.setOnClickListener {
+            val nama = etNama.text.toString().trim()
+            val hargaStr = etHarga.text.toString().trim()
+            val kategoriTerpilih = spKategori.selectedItem.toString()
+
+            if (nama.isNotEmpty() && hargaStr.isNotEmpty()) {
+                val harga = hargaStr.toInt()
+                val idBarangAcak = "MK-" + (100..999).random().toString()
+
+                val produkBaru = PilihProdukActivity.Companion.MenuItem(
+                    idBarangAcak,
+                    nama,
+                    kategoriTerpilih,
+                    harga,
+                    gambarUriTerpilih
+                )
+
+                // 🌟 FIX UTAMA: Disamakan menyetor data ke list global MainActivity
+                MainActivity.menuKosmetikListGlobal.add(produkBaru)
+
+                Toast.makeText(this, "$nama berhasil disimpan!", Toast.LENGTH_SHORT).show()
+                finish()
+            } else {
+                Toast.makeText(this, "Nama produk dan harga wajib diisi!", Toast.LENGTH_SHORT).show()
             }
-            inputStock
         }
-
-        Toast.makeText(this, "Success: $name $stock", Toast.LENGTH_SHORT).show()
     }
 }

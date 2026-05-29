@@ -42,7 +42,7 @@
         android:layout_weight="1"
         android:padding="16dp"
         android:clipToPadding="false"
-        tools:listitem="@layout/item_cart_product" />
+        tools:listitem="@layout/item_card_product" />
 
     <!-- 3. Bagian Bawah: Ringkasan Total Harga -->
     <LinearLayout
