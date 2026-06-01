@@ -4,20 +4,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF5F5"> <com.google.android.material.appbar.AppBarLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@android:color/transparent"
-    app:elevation="0dp">
+    android:background="#FFF5F5">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:navigationIcon="@android:drawable/ic_menu_revert"
-        app:title="Tambah Pegawai"
-        app:titleTextColor="#4A4A4A"/>
-</com.google.android.material.appbar.AppBarLayout>
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@android:drawable/ic_menu_revert"
+            app:title="Tambah Pegawai"
+            app:titleTextColor="#4A4A4A"/>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -133,6 +135,13 @@
                             android:inputType="phone"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pilih Outlet / Cabang"
+                        android:textSize="12sp"
+                        android:textColor="#78909C"
+                        android:layout_marginBottom="4dp"/>
                     <Spinner
                         android:id="@+id/spinnerOutlet"
                         android:layout_width="match_parent"
@@ -173,19 +182,21 @@
                         android:background="#E0E0E0"
                         android:layout_marginBottom="20dp"/>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Jabatan"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_marginBottom="12dp"
-                        app:boxStrokeColor="#E1F5FE">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etPosition"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="text"/>
-                    </com.google.android.material.textfield.TextInputLayout>
+                        android:text="Pilih Jabatan"
+                        android:textSize="12sp"
+                        android:textColor="#78909C"
+                        android:layout_marginBottom="4dp"/>
+                    <Spinner
+                        android:id="@+id/spinnerPosition"
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:layout_marginBottom="16dp"
+                        android:paddingHorizontal="12dp"
+                        android:background="@android:drawable/edit_text"
+                        android:backgroundTint="#F8BBD0"/>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"

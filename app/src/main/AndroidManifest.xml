@@ -42,6 +42,7 @@
         <activity android:name=".PrinterActivity" android:exported="false" />
         <activity android:name=".LaporanActivity" android:exported="false" />
         <activity android:name=".CetakStrukActivity" android:exported="false" />
+        <activity android:name=".EmployeeActivity" android:exported="false" />
 
     </application>
 </manifest>

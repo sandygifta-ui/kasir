@@ -2,67 +2,82 @@ package com.sandya.pos
 
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
-import androidx.appcompat.widget.Toolbar
-import com.sandya.pos.R
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.textfield.TextInputEditText
 
 class AddEmployeeActivity : AppCompatActivity() {
 
-    private lateinit var etName: TextInputEditText
-    private lateinit var etEmail: TextInputEditText
-    private lateinit var etPhone: TextInputEditText
+    private lateinit var etName: EditText
+    private lateinit var etEmail: EditText
+    private lateinit var etPhone: EditText
+    private lateinit var spinnerPosition: Spinner
     private lateinit var spinnerOutlet: Spinner
     private lateinit var switchStatus: SwitchCompat
-    private lateinit var etPosition: TextInputEditText
-    private lateinit var etSalary: TextInputEditText
     private lateinit var btnSave: MaterialButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_employee)
 
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        toolbar.setNavigationOnClickListener {
-            finish()
-        }
+        initViews()
+        setupSpinnerData()
 
+        btnSave.setOnClickListener {
+            prosesSimpanData()
+        }
+    }
+
+    private fun initViews() {
         etName = findViewById(R.id.etName)
         etEmail = findViewById(R.id.etEmail)
         etPhone = findViewById(R.id.etPhone)
+        spinnerPosition = findViewById(R.id.spinnerPosition)
         spinnerOutlet = findViewById(R.id.spinnerOutlet)
-        switchStatus = findViewById(R.id.switchStatus) // Inisialisasi switch status
-        etPosition = findViewById(R.id.etPosition)
-        etSalary = findViewById(R.id.etSalary)
+        switchStatus = findViewById(R.id.switchStatus)
         btnSave = findViewById(R.id.btnSave)
+    }
 
-        val outletOptions = arrayOf("ums", "uns", "laweyan", "colomadu", "slamet riyadi")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, outletOptions)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerOutlet.adapter = adapter
+    private fun setupSpinnerData() {
+        val listOutlet = arrayOf("Surakarta", "Bandung", "Jogjakarta")
+        val adapterOutlet = ArrayAdapter(this, android.R.layout.simple_spinner_item, listOutlet)
+        adapterOutlet.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerOutlet.adapter = adapterOutlet
 
-        // Aksi ketika tombol simpan diklik
-        btnSave.setOnClickListener {
-            val name = etName.text.toString().trim()
-            val selectedOutlet = spinnerOutlet.selectedItem.toString()
+        val listJabatan = arrayOf("Manager", "Cashier", "Staff", "Admin", "cleaning service")
+        val adapterJabatan = ArrayAdapter(this, android.R.layout.simple_spinner_item, listJabatan)
+        adapterJabatan.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerPosition.adapter = adapterJabatan
+    }
 
-            // Membaca status keaktifan (true jika digeser aktif, false jika mati)
-            val isActive = switchStatus.isChecked
-            val statusText = if (isActive) "Aktif" else "Tidak Aktif"
+    private fun prosesSimpanData() {
+        val namaBaru = etName.text.toString().trim()
+        val emailBaru = etEmail.text.toString().trim()
+        val phoneBaru = etPhone.text.toString().trim()
+        val jabatanBaru = spinnerPosition.selectedItem.toString()
+        val cabangBaru = spinnerOutlet.selectedItem.toString()
+        val statusAktif = switchStatus.isChecked // 🌟 Ambil kondisi saklar switch
 
-            // Validasi sederhana: Nama tidak boleh kosong
-            if (name.isEmpty()) {
-                etName.error = "Nama lengkap harus diisi!"
-            } else {
-                // Menampilkan toast sukses dengan rangkuman data termasuk status aktifnya
-                Toast.makeText(this, "Data $name ($selectedOutlet) Status: $statusText Berhasil Disimpan!", Toast.LENGTH_SHORT).show()
-                finish()
-            }
+        if (namaBaru.isNotEmpty()) {
+            // Masukkan data murni beserta status saklarnya ke list global
+            MainActivity.employeeListGlobal.add(
+                EmployeeActivity.Companion.EmployeeItem(
+                    namaBaru,
+                    jabatanBaru,
+                    if (emailBaru.isNotEmpty()) emailBaru else "-",
+                    if (phoneBaru.isNotEmpty()) phoneBaru else "-",
+                    cabangBaru,
+                    statusAktif
+                )
+            )
+
+            Toast.makeText(this, "Pegawai \"$namaBaru\" berhasil ditambahkan!", Toast.LENGTH_SHORT).show()
+            finish()
+        } else {
+            etName.error = "Nama lengkap tidak boleh kosong!"
         }
     }
 }

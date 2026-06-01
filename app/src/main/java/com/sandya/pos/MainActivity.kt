@@ -27,6 +27,9 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         @JvmStatic
+        val employeeListGlobal = ArrayList<EmployeeActivity.Companion.EmployeeItem>()
+
+        @JvmStatic
         val menuKosmetikListGlobal = ArrayList<PilihProdukActivity.Companion.MenuItem>().apply {
             add(PilihProdukActivity.Companion.MenuItem("MK-001", "Lipstik Velvet", "Lips", 85000, null))
             add(PilihProdukActivity.Companion.MenuItem("MK-002", "Lip Tint Cherry", "Lips", 65000, null))
@@ -73,7 +76,6 @@ class MainActivity : AppCompatActivity() {
         val hariIni = SimpleDateFormat("dd/MM/yyyy", Locale("id", "ID")).format(Date())
 
         for (item in LaporanActivity.listLaporanGlobal) {
-            // waktu format: dd/MM/yyyy HH:mm — ambil tanggal saja
             val tanggalTransaksi = item.waktu.take(10)
             if (tanggalTransaksi == hariIni) {
                 val angka = item.totalBayar.replace("Rp", "").replace(".", "").replace(",", "").trim()
@@ -105,7 +107,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, DataKategoriActivity::class.java))
         }
         cardPegawai.setOnClickListener {
-            startActivity(Intent(this, AddEmployeeActivity::class.java))
+            startActivity(Intent(this, EmployeeActivity::class.java))
         }
         cardCabang.setOnClickListener {
             startActivity(Intent(this, AddOutletActivity::class.java))
