@@ -1,58 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.github.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDFBFD"
-    android:padding="16dp">
+    android:background="#FFF5F5"
+    tools:context=".PelangganActivity"
+    tools:ignore="HardcodedText,ContentDescription">
 
-    <!-- Header Toolbar Halaman Pelanggan -->
+    <!-- Kolom Cari Pelanggan -->
     <LinearLayout
-        android:id="@+id/layoutHeader"
+        android:id="@+id/search_container_pelanggan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_margin="16dp"
+        android:background="@android:drawable/editbox_background"
         android:gravity="center_vertical"
-        android:layout_marginBottom="16dp">
+        android:orientation="horizontal"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp">
 
-        <ImageButton
-            android:id="@+id/btnBackInput"
-            android:layout_width="48dp"
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@android:drawable/ic_menu_search"
+            app:tint="#78909C" />
+
+        <EditText
+            android:id="@+id/et_search_pelanggan"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_menu_revert"
-            app:tint="#2D3142"
-            android:contentDescription="Kembali" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Daftar Pelanggan"
-            android:textColor="#2D3142"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginStart="12dp" />
+            android:background="@android:color/transparent"
+            android:hint="Cari Pelanggan..."
+            android:inputType="text"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textColor="#4A4A4A"
+            android:textSize="16sp"
+            android:importantForAutofill="no" />
     </LinearLayout>
 
-    <!-- 🌟 RECYCLERVIEW (Huruf 'a' di kata android sudah kembali) -->
+    <!-- List Data Pelanggan -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvPelanggan"
+        android:id="@+id/rv_pelanggan"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/layoutHeader"
-        android:scrollbars="vertical" />
+        android:layout_below="@id/search_container_pelanggan"
+        android:layout_above="@+id/fab_add_pelanggan"
+        android:padding="8dp"
+        android:clipToPadding="false" />
 
-    <!-- 🌟 FLOATING ACTION BUTTON PINK PASTEL (Atribut android: dan app: sudah normal) -->
+    <!-- Tombol Plus Tambah Pelanggan (Pastel Pink) -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabTambahPelanggan"
+        android:id="@+id/fab_add_pelanggan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="16dp"
+        android:layout_margin="24dp"
         android:src="@android:drawable/ic_input_add"
-        app:backgroundTint="#E8AEFF"
-        app:tint="@android:color/white"
-        android:contentDescription="Tambah Pelanggan Baru" />
+        app:backgroundTint="#F8BBD0"
+        app:tint="#FFFFFF"
+        android:importantForAccessibility="no" />
 
 </RelativeLayout>

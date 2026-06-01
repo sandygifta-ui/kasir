@@ -27,9 +27,6 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         @JvmStatic
-        val employeeListGlobal = ArrayList<EmployeeActivity.Companion.EmployeeItem>()
-
-        @JvmStatic
         val menuKosmetikListGlobal = ArrayList<PilihProdukActivity.Companion.MenuItem>().apply {
             add(PilihProdukActivity.Companion.MenuItem("MK-001", "Lipstik Velvet", "Lips", 85000, null))
             add(PilihProdukActivity.Companion.MenuItem("MK-002", "Lip Tint Cherry", "Lips", 65000, null))
@@ -73,17 +70,19 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateEstimasi() {
         var totalHariIni = 0
-        val hariIni = SimpleDateFormat("dd/MM/yyyy", Locale("id", "ID")).format(Date())
-
+        val hariIni = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
         for (item in LaporanActivity.listLaporanGlobal) {
             val tanggalTransaksi = item.waktu.take(10)
             if (tanggalTransaksi == hariIni) {
-                val angka = item.totalBayar.replace("Rp", "").replace(".", "").replace(",", "").trim()
+                val angka = item.totalBayar
+                    .replace("Rp", "")
+                    .replace(".", "")
+                    .replace(",", "")
+                    .trim()
                 totalHariIni += angka.toIntOrNull() ?: 0
             }
         }
-
-        val format = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
+        val format = NumberFormat.getCurrencyInstance(Locale.getDefault())
         tvEstimation.text = format.format(totalHariIni)
     }
 

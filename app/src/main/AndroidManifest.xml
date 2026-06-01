@@ -43,6 +43,9 @@
         <activity android:name=".LaporanActivity" android:exported="false" />
         <activity android:name=".CetakStrukActivity" android:exported="false" />
         <activity android:name=".EmployeeActivity" android:exported="false" />
+        <activity android:name=".PelangganActivity" android:exported="false" />
+        <activity android:name=".EmployeeListActivity" android:exported="false" />
+        <activity android:name=".TambahPelangganActivity" android:exported="false" />
 
     </application>
 </manifest>

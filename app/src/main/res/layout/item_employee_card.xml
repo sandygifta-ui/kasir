@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.github.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -65,7 +65,7 @@
                 android:textSize="13sp" />
         </LinearLayout>
 
-        <!-- 🌟 FIX: minHeight dinaikkan ke 48dp sesuai standar Google Touch Target Size -->
+        <!-- 🌟 TOMBOL STATUS: Tinggi 48dp aman dari eror Touch Target -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnStatusAktif"
             android:layout_width="105dp"

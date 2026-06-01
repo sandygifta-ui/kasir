@@ -21,9 +21,8 @@ class EmployeeActivity : AppCompatActivity() {
     private lateinit var etSearchEmployee: EditText
     private lateinit var rvEmployee: RecyclerView
     private lateinit var fabAddEmployee: FloatingActionButton
-
     private lateinit var adapter: EmployeeAdapter
-    private val displayList = ArrayList<EmployeeItem>()
+    private val displayList = ArrayList<AddEmployeeActivity.Employee>()
 
     companion object {
         class EmployeeItem(
@@ -32,7 +31,7 @@ class EmployeeActivity : AppCompatActivity() {
             val email: String,
             val telepon: String,
             val cabang: String,
-            var isAktif: Boolean // 🌟 Ada status aktif/tidak
+            var isAktif: Boolean
         )
     }
 
@@ -44,17 +43,14 @@ class EmployeeActivity : AppCompatActivity() {
         rvEmployee = findViewById(R.id.rv_employee)
         fabAddEmployee = findViewById(R.id.fab_add_employee)
 
-        // 🌟 KOSONGAN: Data bawaan (Citra, Dhea, Dawiya) sudah dihapus total dari memori awal!
-
-        displayList.addAll(MainActivity.employeeListGlobal)
+        displayList.addAll(AddEmployeeActivity.employeeList)
 
         adapter = EmployeeAdapter(displayList)
         rvEmployee.layoutManager = LinearLayoutManager(this)
         rvEmployee.adapter = adapter
 
         fabAddEmployee.setOnClickListener {
-            val intent = Intent(this, AddEmployeeActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, AddEmployeeActivity::class.java))
         }
 
         etSearchEmployee.addTextChangedListener(object : TextWatcher {
@@ -74,9 +70,9 @@ class EmployeeActivity : AppCompatActivity() {
     private fun filterNama(query: String) {
         displayList.clear()
         if (query.isEmpty()) {
-            displayList.addAll(MainActivity.employeeListGlobal)
+            displayList.addAll(AddEmployeeActivity.employeeList)
         } else {
-            for (item in MainActivity.employeeListGlobal) {
+            for (item in AddEmployeeActivity.employeeList) {
                 if (item.nama.contains(query, ignoreCase = true)) {
                     displayList.add(item)
                 }
@@ -85,8 +81,9 @@ class EmployeeActivity : AppCompatActivity() {
         adapter.notifyDataSetChanged()
     }
 
-    private inner class EmployeeAdapter(private val list: List<EmployeeItem>) :
-        RecyclerView.Adapter<EmployeeAdapter.ViewHolder>() {
+    private inner class EmployeeAdapter(
+        private val list: List<AddEmployeeActivity.Employee>
+    ) : RecyclerView.Adapter<EmployeeAdapter.ViewHolder>() {
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val tvEmpName: TextView = view.findViewById(R.id.tvEmpName)
@@ -106,38 +103,23 @@ class EmployeeActivity : AppCompatActivity() {
             holder.tvEmpName.text = item.nama
             holder.tvEmpRole.text = item.jabatan
             holder.tvEmpEmail.text = item.email
-            holder.tvEmpPhone.text = item.telepon
+            holder.tvEmpPhone.text = item.phone
 
             val btnStatus = holder.itemView.findViewById<com.google.android.material.button.MaterialButton>(R.id.btnStatusAktif)
 
-            // 🌟 LOGIKA WARNA TOMBOL DINAMIS SAAT AKTIF / NONAKTIF
             fun aturTampilanTombol(aktif: Boolean) {
                 if (aktif) {
                     btnStatus.text = "Aktif"
                     btnStatus.setTextColor(android.graphics.Color.parseColor("#2E7D32"))
-                    btnStatus.setIconResource(android.graphics.drawable.checkbox_on_background)
-                    btnStatus.setIconTintResource(android.R.color.holo_green_dark)
-                    btnStatus.setBackgroundColor(android.graphics.Color.parseColor("#E8F5E9")) // Hijau Pastel
-                    btnStatus.setStrokeColorResource(android.R.color.holo_green_light)
+                    btnStatus.setBackgroundColor(android.graphics.Color.parseColor("#E8F5E9"))
                 } else {
                     btnStatus.text = "Nonaktif"
                     btnStatus.setTextColor(android.graphics.Color.parseColor("#757575"))
-                    btnStatus.setIconResource(android.graphics.drawable.checkbox_off_background)
-                    btnStatus.setIconTintResource(android.R.color.darker_gray)
-                    btnStatus.setBackgroundColor(android.graphics.Color.parseColor("#F5F5F5")) // Abu-abu pudar
-                    btnStatus.setStrokeColorResource(android.R.color.darker_gray)
+                    btnStatus.setBackgroundColor(android.graphics.Color.parseColor("#F5F5F5"))
                 }
             }
 
-            aturTampilanTombol(item.isAktif)
-
-            // 🌟 INTERAKTIF: Klik langsung berubah warna di tempat
-            btnStatus.setOnClickListener {
-                item.isAktif = !item.isAktif
-                aturTampilanTombol(item.isAktif)
-                val pesan = if (item.isAktif) "${item.nama} diaktifkan" else "${item.nama} dinonaktifkan"
-                Toast.makeText(this@EmployeeActivity, pesan, Toast.LENGTH_SHORT).show()
-            }
+            aturTampilanTombol(item.aktif)
         }
 
         override fun getItemCount(): Int = list.size

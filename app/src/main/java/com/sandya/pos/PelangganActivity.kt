@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
+import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -16,9 +16,9 @@ import java.util.ArrayList
 
 class PelangganActivity : AppCompatActivity() {
 
-    private lateinit var btnBackInput: ImageButton
     private lateinit var rvPelanggan: RecyclerView
     private lateinit var fabTambahPelanggan: FloatingActionButton
+    private lateinit var etSearchPelanggan: EditText
     private lateinit var adapter: PelangganAdapter
 
     class Pelanggan(val nama: String, val hp: String, val alamat: String)
@@ -39,11 +39,9 @@ class PelangganActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pelanggan)
 
-        btnBackInput = findViewById(R.id.btnBackInput)
-        rvPelanggan = findViewById(R.id.rvPelanggan)
-        fabTambahPelanggan = findViewById(R.id.fabTambahPelanggan)
-
-        btnBackInput.setOnClickListener { finish() }
+        rvPelanggan = findViewById(R.id.rv_pelanggan)
+        fabTambahPelanggan = findViewById(R.id.fab_add_pelanggan)
+        etSearchPelanggan = findViewById(R.id.et_search_pelanggan)
 
         fabTambahPelanggan.setOnClickListener {
             tambahPelangganLauncher.launch(

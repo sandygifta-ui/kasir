@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.github.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.github.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,6 +8,7 @@
     tools:context=".EmployeeActivity"
     tools:ignore="HardcodedText,ContentDescription">
 
+    <!-- 🔍 Kolom Pencarian Karyawan -->
     <LinearLayout
         android:id="@+id/search_container"
         android:layout_width="match_parent"
@@ -39,72 +40,16 @@
             android:importantForAutofill="no" />
     </LinearLayout>
 
-    <HorizontalScrollView
-        android:id="@+id/hsv_branches"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/search_container"
-        android:scrollbars="none"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:clipToPadding="false">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="12dp">
-
-            <Button
-                android:id="@+id/btn_filter_all"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#8D7B68"
-                android:text="All Branches"
-                android:textColor="#FFFFFF"
-                android:layout_marginEnd="8dp"/>
-
-            <Button
-                android:id="@+id/btn_filter_surakarta"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FDF2F5"
-                android:text="Surakarta"
-                android:textColor="#8D7B68"
-                android:layout_marginEnd="8dp"/>
-
-            <Button
-                android:id="@+id/btn_filter_bandung"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FDF2F5"
-                android:text="Bandung"
-                android:textColor="#8D7B68"
-                android:layout_marginEnd="8dp"/>
-
-            <Button
-                android:id="@+id/btn_filter_jogjakarta"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FDF2F5"
-                android:text="Jogjakarta"
-                android:textColor="#8D7B68"/>
-        </LinearLayout>
-    </HorizontalScrollView>
-
+    <!-- 📜 Daftar List RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_employee"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/hsv_branches"
-        android:layout_above="@+id/fab_add_employee"
+        android:layout_below="@id/search_container"
         android:padding="8dp"
         android:clipToPadding="false" />
 
+    <!-- ➕ Tombol Tambah Karyawan di Pojok Kanan Bawah -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add_employee"
         android:layout_width="wrap_content"
