@@ -8,6 +8,11 @@
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +25,6 @@
         android:theme="@style/Theme.Pos"
         tools:targetApi="31">
 
-        <!-- 🌟 UTAMA: Menetapkan Halaman Login Sebagai Pembuka Aplikasi -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -32,7 +36,7 @@
 
         <activity android:name=".MainActivity" android:exported="false" />
         <activity android:name=".PilihProdukActivity" android:exported="false" />
-        <activity android:name=".TambahKategoriActivity" android:exported="false" />
+        <activity android:name=".ModKategoriActivity" android:exported="false" />
         <activity android:name=".DaftarProdukActivity" android:exported="false" />
         <activity android:name=".DataKategoriActivity" android:exported="false" />
         <activity android:name=".PembayaranActivity" android:exported="false" />
@@ -46,6 +50,17 @@
         <activity android:name=".PelangganActivity" android:exported="false" />
         <activity android:name=".EmployeeListActivity" android:exported="false" />
         <activity android:name=".TambahPelangganActivity" android:exported="false" />
+        <activity android:name=".TambahKategoriActivity" android:exported="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
     </application>
 </manifest>
