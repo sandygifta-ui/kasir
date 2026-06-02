@@ -1,133 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#FDFBFD"
-    android:padding="16dp"
     tools:ignore="HardcodedText">
 
-    <!-- Header Toolbar -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginBottom="24dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <ImageButton
-            android:id="@+id/btnBackInput"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_menu_revert"
-            app:tint="#2D3142"
-            android:contentDescription="Kembali" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kategori Kosmetik"
-            android:textColor="#2D3142"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginStart="12dp" />
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp">
+
+            <ImageButton
+                android:id="@+id/btnBackInput"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_revert"
+                app:tint="#2D3142"
+                android:contentDescription="Kembali" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kategori Kosmetik"
+                android:textColor="#2D3142"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginStart="12dp" />
+
+        </LinearLayout>
+
+        <android.widget.GridLayout
+            android:id="@+id/gridKategori"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnCount="2"
+            android:alignmentMode="alignMargins"
+            android:columnOrderPreserved="false" />
+
     </LinearLayout>
 
-    <!-- Grid Kategori Menu -->
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:columnCount="2"
-        android:rowCount="2"
-        android:alignmentMode="alignMargins"
-        android:columnOrderPreserved="false">
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabTambahKategori"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@android:drawable/ic_input_add"
+        app:backgroundTint="#E8AEFF"
+        android:contentDescription="Tambah Kategori" />
 
-        <!-- Kategori Lips -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardLips"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            android:backgroundTint="#FFD1DC">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lips"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#2D3142"
-                android:layout_gravity="center"/>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Kategori Face -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardFace"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            android:backgroundTint="#FAF0FF">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Face"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#2D3142"
-                android:layout_gravity="center"/>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Kategori Eyes -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardEyes"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            android:backgroundTint="#E8AEFF">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Eyes"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#2D3142"
-                android:layout_gravity="center"/>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Kategori Skincare -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardSkincare"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
-            android:backgroundTint="#A0C4FF">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Skincare"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#2D3142"
-                android:layout_gravity="center"/>
-        </androidx.cardview.widget.CardView>
-
-    </GridLayout>
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
