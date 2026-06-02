@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -18,10 +19,10 @@ class LaporanActivity : AppCompatActivity() {
     private lateinit var rvLaporan: RecyclerView
     private lateinit var tvTotalTransaksi: TextView
     private lateinit var tvTotalPendapatan: TextView
+    private lateinit var btnReset: Button
     private lateinit var adapter: LaporanAdapter
 
     companion object {
-        // 🌟 LIST GLOBAL LAPORAN: Dimulai dari kosong, terisi otomatis tiap kali sukses bayar di HP!
         val listLaporanGlobal = ArrayList<ItemTransaksi>()
 
         class ItemTransaksi(
@@ -40,10 +41,16 @@ class LaporanActivity : AppCompatActivity() {
         rvLaporan = findViewById(R.id.rvLaporan)
         tvTotalTransaksi = findViewById(R.id.tvTotalTransaksi)
         tvTotalPendapatan = findViewById(R.id.tvTotalPendapatan)
+        btnReset = findViewById(R.id.btnReset)
 
         btnBackLaporan.setOnClickListener { finish() }
 
-        // Setup RecyclerView
+        btnReset.setOnClickListener {
+            listLaporanGlobal.clear()
+            adapter.notifyDataSetChanged()
+            updateRingkasanLaporan()
+        }
+
         adapter = LaporanAdapter(listLaporanGlobal)
         rvLaporan.layoutManager = LinearLayoutManager(this)
         rvLaporan.adapter = adapter
@@ -57,17 +64,19 @@ class LaporanActivity : AppCompatActivity() {
         updateRingkasanLaporan()
     }
 
-    // Fungsi menghitung total transaksi dan total uang masuk secara otomatis di HP
     private fun updateRingkasanLaporan() {
         tvTotalTransaksi.text = listLaporanGlobal.size.toString()
 
         var totalUang = 0
         for (item in listLaporanGlobal) {
-            val angkaMurni = item.totalBayar.replace("Rp", "").replace(".", "").trim()
-            val hargaInt = angkaMurni.toIntOrNull() ?: 0
-            totalUang += hargaInt
+            val angkaMurni = item.totalBayar
+                .replace("Rp", "")
+                .replace(".", "")
+                .replace(",", "")
+                .trim()
+            totalUang += angkaMurni.toIntOrNull() ?: 0
         }
-        tvTotalPendapatan.text = "Rp$totalUang"
+        tvTotalPendapatan.text = "Rp${"%,d".format(totalUang)}"
     }
 
     private inner class LaporanAdapter(private val list: List<ItemTransaksi>) :
@@ -88,11 +97,8 @@ class LaporanActivity : AppCompatActivity() {
             val item = list[position]
             holder.tvNama.text = "Nota ${item.noNota} — ${item.waktu}"
             holder.tvNama.setTextColor(Color.parseColor("#2D3142"))
-            holder.tvNama.textSize = 14f
-
             holder.tvDetail.text = "${item.detailProduk}\nTOTAL: ${item.totalBayar}"
             holder.tvDetail.setTextColor(Color.parseColor("#9AA7B5"))
-            holder.tvDetail.textSize = 13f
         }
 
         override fun getItemCount(): Int = list.size
