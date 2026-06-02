@@ -29,7 +29,6 @@ class DaftarProdukActivity : AppCompatActivity() {
         rvDaftarProduk = findViewById(R.id.rvDaftarProduk)
         fabTambahProduk = findViewById(R.id.fabTambahProduk)
 
-        // Ambil kategori dari intent, default kosong = tampil semua
         kategoriFilter = intent.getStringExtra("KATEGORI_FILTER") ?: ""
 
         btnBackProduk.setOnClickListener { finish() }
