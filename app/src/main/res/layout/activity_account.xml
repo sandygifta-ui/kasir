@@ -29,6 +29,7 @@
             android:textColor="#FF6B7D"
             android:textSize="20sp"
             android:textStyle="bold" />
+
     </RelativeLayout>
 
     <LinearLayout
@@ -52,6 +53,7 @@
                 android:src="@drawable/ic_accountt"
                 android:padding="12dp"
                 android:scaleType="centerInside" />
+
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -63,6 +65,7 @@
             android:textColor="#4A4A4A"
             android:textSize="22sp"
             android:textStyle="bold" />
+
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
@@ -70,7 +73,8 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="16dp"
         app:cardElevation="3dp"
-        app:cardBackgroundColor="#FFFFFF">
+        app:cardBackgroundColor="#FFFFFF"
+        android:layout_marginBottom="24dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -127,6 +131,17 @@
                 android:textSize="16sp" />
 
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
+
+    <!-- Tombol Logout di bawah -->
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="Logout"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:backgroundTint="#FF6B7D" />
 
 </LinearLayout>
