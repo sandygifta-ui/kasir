@@ -38,7 +38,7 @@ sistem kasir sederhana untuk usaha kecantikan kecil hingga menengah.
 ## Tampilan Aplikasi
 
 ### Login
-<img src="Screenshots/Login.jpg" width="300">
+<img src="Login.jpg" width="300">
 
 ### Dashboard
 <img src="Screenshots/Main.png" width="300">
