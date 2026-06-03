@@ -3,7 +3,7 @@ Aplikasi kasir mobile berbasis Point of Sale (POS) yang dirancang khusus untuk b
 kecantikan. Memudahkan pengelolaan transaksi, produk, pelanggan, hingga laporan penjualan dalam satu
 genggaman.
 
-## Deskripsi Aplikasi
+## Deskripsi Aplikasi Pos
 Bunny Blush.co adalah aplikasi kasir berbasis Android yang dibuat untuk mempermudah proses transaksi 
 penjualan produk makeup dan kecantikan. Aplikasi ini memiliki fitur seperti menambahkan produk,
 menghitung total pembayaran secara otomatis, dan menyimpan data transaksi. Dengan tampilan 
@@ -90,7 +90,7 @@ sistem kasir sederhana untuk usaha kecantikan kecil hingga menengah.
 
 ## Cara Menjalankan Project
 1. Clone repository
-bash
+# bash
 2. git clone https://github.com/sandygifta-ui/kasir.git
 3. Buka project menggunakan Android Studio
 4. Tunggu proses Gradle selesai
