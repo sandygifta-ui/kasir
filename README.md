@@ -3,7 +3,7 @@ Aplikasi kasir mobile berbasis Point of Sale (POS) yang dirancang khusus untuk b
 kecantikan. Memudahkan pengelolaan transaksi, produk, pelanggan, hingga laporan penjualan dalam satu
 genggaman.
 
-## Deskripsi Aplikasi
+## Deskripsi Aplikasi Pos
 Bunny Blush.co adalah aplikasi kasir berbasis Android yang dibuat untuk mempermudah proses transaksi 
 penjualan produk makeup dan kecantikan. Aplikasi ini memiliki fitur seperti menambahkan produk,
 menghitung total pembayaran secara otomatis, dan menyimpan data transaksi. Dengan tampilan 
@@ -38,43 +38,43 @@ sistem kasir sederhana untuk usaha kecantikan kecil hingga menengah.
 ## Tampilan Aplikasi
 
 ### Login
-<img src="Screenshots/Login.jpg" width="300">
+<img src="Login.jpg" width="300">
 
 ### Dashboard
-<img src="Screenshots/Main.png" width="300">
+<img src="Main.png" width="300">
 
 ### Activity Transaksi
-<img src="Screenshots/Transaksi1.jpg" width="300">
-<img src="Screenshots/Transaksi2.jpg" width="300">
-<img src="Screenshots/Transaksi3.jpg" width="300">
+<img src="Transaksi1.jpg" width="300">
+<img src="Transaksi2.jpg" width="300">
+<img src="Transaksi3.jpg" width="300">
 
 ### Activity Pelanggan
-<img src="Screenshots/Pelanggan.jpg" width="300">
-<img src="Screenshots/TambahPelanggan.jpg" width="300">
+<img src="Pelanggan.jpg" width="300">
+<img src="TambahPelanggan.jpg" width="300">
 
 ### Activity Laporan
-<img src="Screenshots/Laporan.jpg" width="300">
+<img src="Laporan.jpg" width="300">
 
 ### Activity Akun
-<img src="Screenshots/Profile.jpg" width="300">
+<img src="Profile.jpg" width="300">
 
 ### Activity Produk
-<img src="Screenshots/Produk.jpg" width="300">
-<img src="Screenshots/TambahProduk.jpg" width="300">
+<img src="Produk.jpg" width="300">
+<img src="TambahProduk.jpg" width="300">
 
 ### Activity Kategori
-<img src="Screenshots/Kategori.jpg" width="300">
-<img src="Screenshots/TambahKategori.jpg" width="300">
+<img src="Kategori.jpg" width="300">
+<img src="TambahKategori.jpg" width="300">
 
 ### Activity Pegawai
-<img src="Screenshots/Pegawai.jpg" width="300">
-<img src="Screenshots/TambahPegawai.jpg" width="300">
+<img src="Pegawai.jpg" width="300">
+<img src="TambahPegawai.jpg" width="300">
 
 ### Activity Cabang
-<img src="Screenshots/TambahOutlet.jpg" width="300">
+<img src="TambahOutlet.jpg" width="300">
 
 ### Printer
-<img src="Screenshots/Printer.jpg" width="300">
+<img src="Printer.jpg" width="300">
 
 ## Struktur Menu
 - Dashboard
@@ -90,7 +90,7 @@ sistem kasir sederhana untuk usaha kecantikan kecil hingga menengah.
 
 ## Cara Menjalankan Project
 1. Clone repository
-bash
+# bash
 2. git clone https://github.com/sandygifta-ui/kasir.git
 3. Buka project menggunakan Android Studio
 4. Tunggu proses Gradle selesai
